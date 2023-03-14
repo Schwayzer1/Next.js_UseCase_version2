@@ -17,6 +17,7 @@ model Post {
   content String @db.Text
   image String @db.VarChar(200)
   createDate DateTime
+  comment Comment[]
 }
 
 model User {
@@ -31,4 +32,6 @@ model Comment {
   text String @db.MediumText
   author User @relation(references: [id], fields: [authorId])
   authorId Int
+  post Post @relation(references: [id],fields: [postId])
+  postId Int
 }
