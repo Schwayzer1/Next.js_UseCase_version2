@@ -1,8 +1,22 @@
+import axios from "axios";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 
 const UserInside = () => {
+  useEffect(() => {
+    const URL = "http://localhost:3000/api/user/";
+    const obj = {
+      userName: session?.user.name,
+      image: session?.user.image,
+      email: session?.user.email,
+    };
+    axios
+      .post(URL, obj)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }, []);
+
   const { data: session } = useSession();
   return (
     <div className="height flex justify-center items-center text-center flex-col">

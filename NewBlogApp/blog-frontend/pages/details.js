@@ -9,8 +9,8 @@ import React from "react";
 
 const Details = () => {
   const router = useRouter();
-  const data = router.query;
-  console.log(data, "details");
+  const { id, title, subTitle, content, image } = router.query;
+  console.log(id, "details");
   const { data: session } = useSession();
 
   return (
@@ -21,17 +21,17 @@ const Details = () => {
             <img
               alt="ecommerce"
               className="lg:w-96 w-full object-cover  rounded border-2 border-gray-400 mb-5"
-              src={data.image}
+              src={image}
             />
             <div className="lg:w-full w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 text-center">
               <h1 className="text-gray-900 text-6xl title-font font-medium mb-5">
-                {data.title}
+                {title}
               </h1>
               <h4 className="text-gray-900 text-2xl title-font font-medium mb-5">
-                {data.subTitle}
+                {subTitle}
               </h4>
 
-              <p className="leading-relaxed text-lg">{data.content}</p>
+              <p className="leading-relaxed text-lg">{content}</p>
 
               <div className="flex justify-center items-end mt-24">
                 <Link

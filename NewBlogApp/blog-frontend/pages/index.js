@@ -36,6 +36,8 @@ export default function Home() {
     }
   };
 
+  console.log(session);
+
   return (
     <>
       <Head>
@@ -44,7 +46,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {session ? (
+      {session?.user.email === "furkann.onay@gmail.com" ? (
         <div className="flex justify-end text-center ">
           <button
             onClick={handleClick}

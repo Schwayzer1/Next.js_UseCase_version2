@@ -7,11 +7,11 @@ export default async function handler(
 ) {
   const prisma = new PrismaClient();
   if (req.method === "GET") {
-    const comment = prisma.comment.findMany();
+    const comment = await prisma.comment.findMany();
     return res.send(comment);
   } else if (req.method === "POST") {
     const { body: data } = req;
-    const newComment = prisma.comment.create({ data });
+    const newComment = await prisma.comment.create({ data });
     return res.status(201).send(newComment);
   }
 }
