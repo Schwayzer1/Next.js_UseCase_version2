@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import blogPosts from "../features/blogSlice";
+import allUser from "../features/userSlice";
+import allPost from "../features/postSlice";
 
 const store = configureStore({
   reducer: {
-    blog: blogPosts,
+    user: allUser,
+    post: allPost,
   },
 });
 

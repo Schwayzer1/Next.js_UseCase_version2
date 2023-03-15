@@ -58,7 +58,7 @@ const Details = () => {
             </div>
           </div>
         </div>
-        {session ? <CommentForm /> : null}
+        {session ? <CommentForm postId={id} /> : null}
         <section className="bg-white dark:bg-gray-900 py-5 lg:py-5">
           <div className="max-w-2xl mx-auto px-4">
             <Comments />

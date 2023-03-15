@@ -7,12 +7,12 @@ import store from "../app/store";
 
 export default function App({ Component, pageProps, session }) {
   return (
-    // <Provider store={store}>
-    <SessionProvider session={session}>
-      <Navbar />
-      <Component {...pageProps} />
-      <Footer />
-    </SessionProvider>
-    // </Provider>
+    <Provider store={store}>
+      <SessionProvider session={session}>
+        <Navbar />
+        <Component {...pageProps} />
+        <Footer />
+      </SessionProvider>
+    </Provider>
   );
 }

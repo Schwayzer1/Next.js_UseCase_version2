@@ -1,12 +1,15 @@
+import { user } from "@/features/userSlice";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import React, { use, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const CommentForm = ({ postId }) => {
   /*commentPost fonksiyonunda axios post işlemi ile yazılan yorumları database e göndereceğiz */
-  const { data: session } = useSession();
 
-  console.log(session);
+  const { user } = useSelector((state) => state.user);
+
+  console.log(user, "commenpost");
 
   const [comment, setComment] = useState("");
 
@@ -16,15 +19,16 @@ const CommentForm = ({ postId }) => {
     await axios
       .post(URL, {
         text: comment,
-        authorId: 1,
-        postId: postId,
+        authorId: user[0].id,
+        postId: Number(postId),
       })
       .then((res) => {
         console.log(res);
         if (res.status === 201) {
           window.location.reload(true);
         }
-      });
+      })
+      .catch((err) => console.log(err.message));
   };
 
   return (
