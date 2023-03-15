@@ -1,10 +1,30 @@
-import React from "react";
+import axios from "axios";
+import { useSession } from "next-auth/react";
+import React, { use, useEffect, useState } from "react";
 
-const CommentForm = () => {
+const CommentForm = ({ postId }) => {
   /*commentPost fonksiyonunda axios post işlemi ile yazılan yorumları database e göndereceğiz */
+  const { data: session } = useSession();
 
-  const commentPost = (e) => {
-    e.preventDefault();
+  console.log(session);
+
+  const [comment, setComment] = useState("");
+
+  const URL = "http://localhost:3000/api/comment/";
+
+  const commentPost = async () => {
+    await axios
+      .post(URL, {
+        text: comment,
+        authorId: 1,
+        postId: postId,
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status === 201) {
+          window.location.reload(true);
+        }
+      });
   };
 
   return (
@@ -15,13 +35,24 @@ const CommentForm = () => {
             Comments
           </h2>
         </div>
-        <form className="mb-6">
+        <form
+          className="mb-6"
+          onSubmit={async (e) => {
+            e.preventDefault();
+            await commentPost();
+          }}
+        >
           <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
             <label htmlFor="comment" className="sr-only">
               Your comment
             </label>
             <textarea
+              onChange={(e) => {
+                setComment(e.target.value);
+              }}
+              value={comment.text}
               id="comment"
+              name="text"
               rows={6}
               className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
               placeholder="Write a comment..."
@@ -30,7 +61,6 @@ const CommentForm = () => {
             />
           </div>
           <button
-            onClick={commentPost}
             type="submit"
             className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-green-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
           >

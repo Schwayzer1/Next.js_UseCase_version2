@@ -21,7 +21,11 @@ const Details = () => {
             <img
               alt="ecommerce"
               className="lg:w-96 w-full object-cover  rounded border-2 border-gray-400 mb-5"
-              src={image}
+              src={
+                image
+                  ? image
+                  : "https://static.vecteezy.com/system/resources/previews/004/853/486/non_2x/picture-gallery-image-line-icon-illustration-logo-template-suitable-for-many-purposes-free-vector.jpg"
+              }
             />
             <div className="lg:w-full w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 text-center">
               <h1 className="text-gray-900 text-6xl title-font font-medium mb-5">

@@ -13,5 +13,29 @@ export default NextAuth({
       clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
+  // callbacks: {
+  //   session: async (session) => {
+  //     if (!session) return;
+
+  //     const client = await connectToDatabase();
+  //     const usersCollection = client.db().collection("user");
+
+  //     const userData = await usersCollection.findOne({
+  //       email: session.user.email,
+  //     });
+
+  //     return {
+  //       session: {
+  //         user: {
+  //           id: userData._id,
+  //           firstname: userData.firstname,
+  //           lastname: userData.lastname,
+  //           username: userData.username,
+  //           email: userData.email,
+  //         },
+  //       },
+  //     };
+  //   },
+  // },
   secret: process.env.JWT_SECRET,
 });

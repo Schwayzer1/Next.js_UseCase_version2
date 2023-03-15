@@ -4,22 +4,39 @@ import axios from "axios";
 const AddPostForm = () => {
   const [data, setData] = useState({
     title: "",
-    subTitle: "",
+    subtitle: "",
     content: "",
     image: "",
+    createDate: new Date(),
   });
 
-  const url = "http://localhost:5000/posts";
+  const url = "http://localhost:3000/api/post/";
 
   const handleSubmit = async () => {
-    await axios.post(url, data).then((res) => {
-      console.log(res);
-    });
+    await axios
+      .post(url, {
+        title: data.title,
+        subtitle: data.subtitle,
+        content: data.content,
+        image: data.image,
+        createDate: new Date(),
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status === 201) {
+          window.location.reload(true);
+        }
+      });
   };
 
   console.log(data);
   return (
-    <form>
+    <form
+      onSubmit={async (e) => {
+        e.preventDefault();
+        await handleSubmit();
+      }}
+    >
       <div className="relative z-0 w-full mb-6 group">
         <input
           onChange={(e) =>
@@ -45,9 +62,9 @@ const AddPostForm = () => {
           onChange={(e) =>
             setData({ ...data, [e.target.name]: e.target.value })
           }
-          value={data.subTitle}
+          value={data.subtitle}
           type="text"
-          name="subTitle"
+          name="subtitle"
           id="subtitle"
           className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "
@@ -102,7 +119,6 @@ const AddPostForm = () => {
       </div>
       <div className="text-center">
         <button
-          onClick={handleSubmit}
           type="submit"
           className=" focus:ring-4 focus:outline-none focus:ring-gray-300 w-full sm:w-auto  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800  bg-gray-800 text-gray-100 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-md font-medium"
         >

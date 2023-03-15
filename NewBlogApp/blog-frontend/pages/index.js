@@ -12,7 +12,7 @@ export default function Home() {
   const [modal, setmodal] = useState(false);
   const { data: session } = useSession();
 
-  const url = "http://localhost:5000/posts";
+  const url = "http://localhost:3000/api/post/";
 
   const [data, setData] = useState([]);
 
