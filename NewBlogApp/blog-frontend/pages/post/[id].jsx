@@ -13,8 +13,8 @@
 import Details from "@/components/Details";
 import React from "react";
 
-const [id] = () => {
+export const PostPage = ({ params }) => {
+  const { id } = req.params;
+
   return <Details />;
 };
-
-export default [id];

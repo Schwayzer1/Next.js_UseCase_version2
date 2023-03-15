@@ -22,7 +22,7 @@ const Navbar = () => {
             Icon when menu is open.
 
             Menu open: "block", Menu closed: "hidden"
-          */}
+            */}
                 <svg
                   className="hidden h-6 w-6"
                   fill="none"
@@ -191,6 +191,12 @@ const Navbar = () => {
                   >
                     SignIn
                   </Link>
+                  <Link
+                    href="register2"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                  >
+                    Register
+                  </Link>
                 </div>
               </div>
             </div>
@@ -233,6 +239,12 @@ const Navbar = () => {
               className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
             >
               SignIn
+            </Link>
+            <Link
+              href="register2"
+              className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            >
+              Register
             </Link>
           </div>
         </div>

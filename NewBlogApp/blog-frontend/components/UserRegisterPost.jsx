@@ -1,9 +1,7 @@
-import axios from "axios";
-import { useSession } from "next-auth/react";
-import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
+import { useSession, signIn, signOut } from "next-auth/react";
 
-const UserInside = () => {
+const UserRegisterPost = () => {
   // useEffect(() => {
   //   const URL = "http://localhost:3000/api/user/";
   //   const obj = {
@@ -34,4 +32,4 @@ const UserInside = () => {
   );
 };
 
-export default UserInside;
+export default UserRegisterPost;
