@@ -35,4 +35,5 @@ model Comment {
   authorId Int
   post Post @relation(references: [id],fields: [postId])
   postId Int
+  createDate DateTime
 }

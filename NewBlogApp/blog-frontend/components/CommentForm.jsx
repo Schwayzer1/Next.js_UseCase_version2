@@ -1,7 +1,5 @@
-import { user } from "@/features/userSlice";
 import axios from "axios";
-import { useSession } from "next-auth/react";
-import React, { use, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 const CommentForm = ({ postId }) => {
@@ -21,11 +19,12 @@ const CommentForm = ({ postId }) => {
         text: comment,
         authorId: user[0].id,
         postId: Number(postId),
+        createDate: new Date(),
       })
       .then((res) => {
         console.log(res);
         if (res.status === 201) {
-          window.location.reload(true);
+          // window.location.reload(true);
         }
       })
       .catch((err) => console.log(err.message));

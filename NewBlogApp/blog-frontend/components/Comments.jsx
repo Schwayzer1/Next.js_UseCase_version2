@@ -1,7 +1,19 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 
-const Comments = () => {
+const Comments = ({ specialId }) => {
   /*axios ile yorumlar burada çekilecek ve aşağıda axios ile map edilip yayınlanacak */
+  // const url = "http://localhost:3000/api/comment/";
+  // useEffect(() => {
+  //   axios.get(url).then((res) => {
+  //     console.log(res, "commentres");
+  //     const filteredComments = res.data.filter((item) => {
+  //       console.log(specialId, "ResPostId");
+  //       return item.postId === specialId;
+  //     });
+  //     console.log(filteredComments, "filtered comments");
+  //   });
+  // }, [specialId]);
 
   return (
     <article className="p-6 mb-6 text-base bg-white rounded-lg dark:bg-gray-900">

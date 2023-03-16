@@ -21,7 +21,7 @@ export default function Home() {
     axios.get(url2).then((res) => {
       console.log(res, "responsive");
       const dbUser = res.data.filter((item) => {
-        return item.email === session.user.email;
+        return item.email === session?.user.email;
       });
       dispatch(user(dbUser));
       console.log(dbUser, "database user");
