@@ -28,8 +28,6 @@ export default function Home() {
     });
   }, []);
 
-  console.log(session, "index");
-
   const url = "http://localhost:3000/api/post/";
 
   const [data, setData] = useState([]);
@@ -37,7 +35,6 @@ export default function Home() {
   const getData = async () => {
     setLoading(true);
     await axios.get(url, data).then((res) => {
-      console.log(res.data, "indexdata");
       setData(res.data);
     });
     setLoading(false);
@@ -45,7 +42,6 @@ export default function Home() {
 
   useEffect(() => {
     getData();
-    console.log(data);
   }, []);
 
   const handleClick = () => {
@@ -55,8 +51,6 @@ export default function Home() {
       setmodal(true);
     }
   };
-
-  console.log(session);
 
   return (
     <>

@@ -5,7 +5,6 @@ import BeforeUserRegister from "@/components/BeforeUserRegister";
 
 function Register2() {
   const { data: session } = useSession();
-  console.log(session);
 
   if (!session) {
     return <BeforeUserRegister />;

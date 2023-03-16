@@ -5,7 +5,6 @@ import UserOutside from "@/components/UserOutside";
 
 function Register() {
   const { data: session } = useSession();
-  console.log(session);
 
   if (session) {
     return <UserInside />;

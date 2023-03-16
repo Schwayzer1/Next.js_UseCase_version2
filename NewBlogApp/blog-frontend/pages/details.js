@@ -10,7 +10,6 @@ import React from "react";
 const Details = () => {
   const router = useRouter();
   const { id, title, subTitle, content, image } = router.query;
-  console.log(id, "details");
   const { data: session } = useSession();
 
   return (

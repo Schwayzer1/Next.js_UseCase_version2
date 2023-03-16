@@ -29,7 +29,6 @@ const AddPostForm = () => {
       });
   };
 
-  console.log(data);
   return (
     <form
       onSubmit={async (e) => {

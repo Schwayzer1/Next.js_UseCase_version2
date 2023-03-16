@@ -15,7 +15,7 @@ import React from "react";
 
 export const PostPage = ({ params }) => {
   const { id } = req.params;
-  console.log(id);
+  console.log(id, "params id");
 
   return <Details />;
 };

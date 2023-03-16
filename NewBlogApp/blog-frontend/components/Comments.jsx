@@ -13,7 +13,9 @@ const Comments = ({ specialId }) => {
       setFilteredComments(comments);
     });
   }, [specialId]);
+
   console.log(filteredComments, "filtered");
+
   {
     filteredComments.map((item) => {
       console.log(item);

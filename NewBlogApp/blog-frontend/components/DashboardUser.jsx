@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 const DashboardUser = () => {
   const [data, setData] = useState();
+
   const url = "http://localhost:3000/api/user";
   useEffect(() => {
     axios
@@ -15,7 +16,6 @@ const DashboardUser = () => {
         console.log(error.message);
       });
   }, []);
-  console.log(data, "state");
 
   return (
     <>

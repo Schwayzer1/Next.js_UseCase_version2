@@ -7,7 +7,7 @@ const CommentForm = ({ postId }) => {
 
   const { user } = useSelector((state) => state.user);
 
-  console.log(user, "commenpost");
+  console.log(user, "commentpost");
 
   const [comment, setComment] = useState("");
 
