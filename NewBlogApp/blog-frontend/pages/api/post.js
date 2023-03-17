@@ -37,7 +37,5 @@ export default async function Post(
   } catch (error) {
     console.error(error);
     return res.status(500).send({ message: error.message });
-  } finally {
-    await prisma.$disconnect();
   }
 }
