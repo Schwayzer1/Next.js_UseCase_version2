@@ -27,7 +27,7 @@ export default function Home() {
       dispatch(user(dbUser));
       console.log(dbUser, "database user");
     });
-  }, []);
+  });
 
   const url = "http://localhost:3000/api/post/";
 

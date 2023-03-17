@@ -1,9 +1,12 @@
 import CommentForm from "@/components/CommentForm";
 import Comments from "@/components/Comments";
+import axios from "axios";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { user } from "@/features/userSlice";
 
 //! bu sayfayı komple [blogid].jsx sayfasına taşımak gerekiyor
 
@@ -11,6 +14,20 @@ const Details = () => {
   const router = useRouter();
   const { id, title, subTitle, content, image } = router.query;
   const { data: session } = useSession();
+
+  const url2 = "http://localhost:3000/api/user";
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios.get(url2).then((res) => {
+      console.log(res, "responsive");
+      const dbUser = res.data.filter((item) => {
+        return item.email === session?.user.email;
+      });
+      dispatch(user(dbUser));
+      console.log(dbUser, "database user");
+    });
+  });
 
   return (
     <div className="height">

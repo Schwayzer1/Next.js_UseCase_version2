@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 const CommentForm = ({ postId }) => {
   /*commentPost fonksiyonunda axios post işlemi ile yazılan yorumları database e göndereceğiz */
 
   const { user } = useSelector((state) => state.user);
 
-  console.log(user, "commentpost");
+  const router = useRouter();
 
   const [comment, setComment] = useState("");
 
@@ -24,7 +25,7 @@ const CommentForm = ({ postId }) => {
       .then((res) => {
         console.log(res);
         if (res.status === 201) {
-          // window.location.reload(true);
+          router.reload();
         }
       })
       .catch((err) => console.log(err.message));
