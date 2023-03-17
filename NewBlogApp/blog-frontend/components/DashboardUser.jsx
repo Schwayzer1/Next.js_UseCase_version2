@@ -17,6 +17,24 @@ const DashboardUser = () => {
       });
   }, []);
 
+  const handleDelete = async (id2) => {
+    console.log(id2);
+    const obj = {
+      id: Number(id2),
+    };
+    await axios
+      .delete(url, {
+        data: obj,
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          window.location.reload(true);
+        }
+      })
+      .catch((err) => console.log(err.message));
+  };
+
   return (
     <>
       <div className="relative overflow-x-auto py-8">
@@ -55,6 +73,7 @@ const DashboardUser = () => {
                   <td className="px-6 py-4">{item.image}</td>
                   <td className="px-6 py-4">
                     <button
+                      onClick={() => handleDelete(item.id)}
                       type="button"
                       className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 "
                     >

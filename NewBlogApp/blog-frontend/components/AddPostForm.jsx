@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const AddPostForm = () => {
   const [data, setData] = useState({
@@ -9,6 +10,7 @@ const AddPostForm = () => {
     image: "",
     createDate: new Date(),
   });
+  const router = useRouter();
 
   const url = "http://localhost:3000/api/post/";
 
@@ -24,7 +26,7 @@ const AddPostForm = () => {
       .then((res) => {
         console.log(res);
         if (res.status === 201) {
-          window.location.reload(true);
+          router.reload();
         }
       });
   };
