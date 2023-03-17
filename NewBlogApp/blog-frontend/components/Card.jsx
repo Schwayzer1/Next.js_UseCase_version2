@@ -1,31 +1,17 @@
 import React from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
-import axios from "axios";
-import { useRouter, Router } from "next/router";
 import Link from "next/link";
 
 const Card = ({ data, setData }) => {
   console.log(data, "CARD");
   const { data: session } = useSession();
-  // const [comment, setcomment] = useState(false);
-
-  const url = "http://localhost:5000/posts/";
-
-  // const handleDelete = async (id) => {
-  //   console.log(id);
-  //   await axios.delete(url + id).then((res) => {
-  //     console.log(res);
-  //     if (res.status === 200) {
-  //       window.location.reload(true);
-  //     }
-  //   });
-  // };
 
   return (
     <>
       {data?.map((item) => {
         return (
           <article
+            key=""
             id={item.id}
             className="shadow-md max-w-sm transform hover:-translate-y-1 duration-300 hover:shadow-xl cursor-pointer m-5 border-4"
           >

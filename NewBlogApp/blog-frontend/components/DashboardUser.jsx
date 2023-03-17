@@ -60,7 +60,7 @@ const DashboardUser = () => {
           </thead>
           {data?.map((item) => {
             return (
-              <tbody>
+              <tbody key="">
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                   <th
                     scope="row"
