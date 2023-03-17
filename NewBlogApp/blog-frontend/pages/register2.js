@@ -1,5 +1,5 @@
 import React from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import UserRegisterPost from "@/components/UserRegisterPost";
 import BeforeUserRegister from "@/components/BeforeUserRegister";
 

@@ -5,18 +5,13 @@ import { useRouter } from "next/router";
 
 const CommentForm = ({ postId }) => {
   /*commentPost fonksiyonunda axios post işlemi ile yazılan yorumları database e göndereceğiz */
-
-  const { user } = useSelector((state) => state.user);
-
-  const router = useRouter();
-
   const [comment, setComment] = useState("");
-
-  const URL = "http://localhost:3000/api/comment/";
+  const { user } = useSelector((state) => state.user);
+  const router = useRouter();
 
   const commentPost = async () => {
     await axios
-      .post(URL, {
+      .post("/api/comment", {
         text: comment,
         authorId: user[0].id,
         postId: Number(postId),

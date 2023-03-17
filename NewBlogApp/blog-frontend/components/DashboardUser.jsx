@@ -4,35 +4,24 @@ import React, { useEffect, useState } from "react";
 const DashboardUser = () => {
   const [data, setData] = useState();
 
-  const url = "http://localhost:3000/api/user";
   useEffect(() => {
-    axios
-      .get(url)
-      .then((response) => {
-        console.log(response.data);
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+    axios.get("/api/user/").then((response) => {
+      setData(response.data);
+    });
   }, []);
 
-  const handleDelete = async (id2) => {
-    console.log(id2);
-    const obj = {
-      id: Number(id2),
-    };
+  const handleDelete = async (_id) => {
     await axios
       .delete(url, {
-        data: obj,
+        data: {
+          id: _id,
+        },
       })
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
           window.location.reload(true);
         }
-      })
-      .catch((err) => console.log(err.message));
+      });
   };
 
   return (

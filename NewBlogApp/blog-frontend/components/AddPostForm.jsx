@@ -12,11 +12,9 @@ const AddPostForm = () => {
   });
   const router = useRouter();
 
-  const url = "http://localhost:3000/api/post/";
-
   const handleSubmit = async () => {
     await axios
-      .post(url, {
+      .post("/api/post", {
         title: data.title,
         subtitle: data.subtitle,
         content: data.content,
@@ -24,7 +22,6 @@ const AddPostForm = () => {
         createDate: new Date(),
       })
       .then((res) => {
-        console.log(res);
         if (res.status === 201) {
           router.reload();
         }

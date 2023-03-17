@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
 import PostList from "@/components/PostList";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
@@ -9,33 +8,16 @@ import { useDispatch } from "react-redux";
 import { user } from "@/features/userSlice";
 import Loading from "@/components/Loading";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [modal, setmodal] = useState(false);
-  const { data: session } = useSession();
-  const url2 = "http://localhost:3000/api/user";
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    axios.get(url2).then((res) => {
-      console.log(res, "responsive");
-      const dbUser = res.data.filter((item) => {
-        return item.email === session?.user.email;
-      });
-      dispatch(user(dbUser));
-      console.log(dbUser, "database user");
-    });
-  });
-
-  const url = "http://localhost:3000/api/post/";
-
   const [data, setData] = useState([]);
+  const { data: session } = useSession();
+  const dispatch = useDispatch();
 
   const getData = async () => {
     setLoading(true);
-    await axios.get(url, data).then((res) => {
+    await axios.get("/api/post", data).then((res) => {
       setData(res.data);
       setLoading(false);
     });
@@ -44,6 +26,16 @@ export default function Home() {
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    axios.get("/api/user/").then((res) => {
+      console.log(res, "responsive");
+      const dbUser = res.data.filter((item) => {
+        return item.email === session?.user.email;
+      });
+      dispatch(user(dbUser));
+    });
+  });
 
   const handleClick = () => {
     if (modal) {

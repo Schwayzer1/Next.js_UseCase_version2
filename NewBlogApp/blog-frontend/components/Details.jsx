@@ -9,7 +9,7 @@ import React from "react";
 
 const Details = () => {
   const router = useRouter();
-  const { id, title, subTitle, content, image } = router.query;
+  const { title, subTitle, content, image } = router.query;
   const { data: session } = useSession();
 
   return (

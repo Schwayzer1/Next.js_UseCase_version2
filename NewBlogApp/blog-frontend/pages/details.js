@@ -15,11 +15,11 @@ const Details = () => {
   const { id, title, subTitle, content, image } = router.query;
   const { data: session } = useSession();
 
-  const url2 = "http://localhost:3000/api/user";
+  const url = "http://localhost:3000/api/user";
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get(url2).then((res) => {
+    axios.get(url).then((res) => {
       console.log(res, "responsive");
       const dbUser = res.data.filter((item) => {
         return item.email === session?.user.email;

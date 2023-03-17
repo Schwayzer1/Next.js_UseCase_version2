@@ -4,30 +4,20 @@ import React, { useEffect, useState } from "react";
 const DashboardPost = () => {
   const [data, setData] = useState();
 
-  const url = "http://localhost:3000/api/post";
   useEffect(() => {
-    axios
-      .get(url)
-      .then((response) => {
-        console.log(response.data);
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+    axios.get("/api/post/").then((response) => {
+      setData(response.data);
+    });
   }, []);
 
-  const handleDelete = async (id2) => {
-    console.log(id2);
-    const obj = {
-      postId: id2,
-    };
+  const handleDelete = async (_postId) => {
     await axios
       .delete(url, {
-        data: obj,
+        data: {
+          postId: _postId,
+        },
       })
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
           window.location.reload(true);
         }

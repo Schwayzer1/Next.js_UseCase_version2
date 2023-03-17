@@ -11,23 +11,6 @@ const blogPosts = createSlice({
     allPosts: (state, { payload }) => {
       state.blog = payload;
     },
-    // addArticle: (state, { payload }) => {
-    //   state.blog = [...state.blog, payload];
-    // },
-    // addPost: (state, { payload }) => {
-    //   console.log(state.blog);
-    //   state.blog = [...state.blog, payload];
-    // },
-    // updatePost: (state, { payload }) => {
-    //   const { id, title, body, userId } = payload;
-    //   const postIndex = state.blog.findIndex((post) => post.id === id);
-    //   if (postIndex !== -1) {
-    //     state.blog[postIndex] = { id, title, body, userId };
-    //   }
-    // },
-    // deletePost: (state, { payload }) => {
-    //   state.blog = state.blog.filter((post) => post.id !== payload);
-    // },
   },
 });
 

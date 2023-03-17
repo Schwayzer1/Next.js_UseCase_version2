@@ -2,8 +2,7 @@ import React from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 
-const Card = ({ data, setData }) => {
-  console.log(data, "CARD");
+const Card = ({ data }) => {
   const { data: session } = useSession();
 
   return (

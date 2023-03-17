@@ -1,9 +1,9 @@
 import React from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 const BeforeUserRegister = () => {
   return (
-    <div className="">
+    <div>
       <div className=" height flex justify-center items-center my-auto flex-col">
         <h1 className="text-4xl p-4 m-4 ">
           You are not sign in If you want to add a comment, please register 😊{" "}

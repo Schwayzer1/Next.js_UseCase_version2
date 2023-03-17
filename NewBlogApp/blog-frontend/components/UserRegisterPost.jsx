@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import axios from "axios";
 
@@ -7,18 +7,14 @@ const UserRegisterPost = () => {
   const [error, setError] = useState();
 
   useEffect(() => {
-    const URL = "http://localhost:3000/api/user/";
-    const obj = {
-      userName: session?.user.name,
-      image: session?.user.image,
-      email: session?.user.email,
-    };
     axios
-      .post(URL, obj)
-      .then((res) => console.log(res))
+      .post("/api/user/", {
+        userName: session?.user.name,
+        image: session?.user.image,
+        email: session?.user.email,
+      })
       .catch((err) => {
         setError(err);
-        console.log(error);
       });
   }, []);
 
